@@ -46,7 +46,7 @@ export const Digimons: FC<DigimonsType> = memo(({ randNum }) => {
             setType
         );
         setDigiNameValue((_prevDigiNameValue) => '');
-    }, [randNum]);
+    }, [randNum]); // 依存配列 randNum：ランダム数値が変更する度に処理
 
     /* デジモン検索でのデータ取得及び反映 */
     const searchTargetDigimon = useCallback(() => {
@@ -77,15 +77,15 @@ export const Digimons: FC<DigimonsType> = memo(({ randNum }) => {
                 <div className="digimonContent">
                     <div className="digimonContentChildren">
                         {isDigimonData?.name &&
-                            <h2><span>{isDigimonData?.id}：</span>{isDigimonData?.name}</h2>
+                            <h2><span>No.{isDigimonData?.id}：</span>今日のあなたは【{isDigimonData?.name}】</h2>
                         }
                         <img className="thumbnail" src={isDigimonData?.images[0].href} alt={isDigimonData?.name} />
                         {isType.length > 0 &&
-                            <>
+                            <p className="type">タイプ：
                                 {isType.map((type, i) => (
-                                    <p key={i} className="type"><span>タイプ：</span>{type}</p>
+                                    <span key={i}>{type}, </span>
                                 ))}
-                            </>
+                            </p>
                         }
                         {isDescriptions && <p className="description">{isDescriptions}</p>}
                     </div>
@@ -240,6 +240,7 @@ line-height: 2;
         border-radius: 4px;
         
         & p {
+            overflow-wrap: anywhere;
             margin: 0;
             line-height: 2;
         }
