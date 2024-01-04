@@ -32,7 +32,8 @@ const DigimonViewBtnElm = styled.button`
 cursor: pointer;
 display: block;
 width: clamp(16rem, calc(100vw/2), 32rem);
-line-height: 4.4rem;
+line-height: 2;
+padding: 1em;
 letter-spacing: 0.25em;
 margin: 2.5em auto;
 appearance: none;
@@ -45,6 +46,7 @@ transition: all .25s;
 @media screen and (min-width: 700px) {
     width: clamp(320px, 100%, 480px);
     line-height: 44px;
+    padding: 0;
 }
 
 &[disabled]{
