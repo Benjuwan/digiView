@@ -48,7 +48,7 @@ export const SearchForm: FC<SearchFormProps> = memo((props) => {
             <p>※なりたいデジモンがいる場合は【英語名】で入力してください</p>
             <div>
                 <input type="text" value={isDigiNameValue} onInput={(inputElm: ChangeEvent<HTMLInputElement>) => setDigiName(inputElm.currentTarget)} />
-                <button type="button" onClick={searchTargetDigimon}>になりたい</button>
+                <button disabled={isDigiNameValue.length <= 0} type="button" onClick={searchTargetDigimon}>になりたい</button>
             </div>
         </DigiSearchForm>
     );
@@ -94,12 +94,18 @@ font-size: 1.4rem;
         border-radius: 4px;
         transition: all .25s;
         line-height: 2;
-        padding: 1em 0;
+        padding: 1em .5em;
 
-        &:hover {
-            background-color: #fff;
+        &[disabled]{
+            cursor: default;
             color: #333;
+            background-color: #dadada;
+        }
+
+        &:not([disabled]):hover{
+            background-color: #fff;
             border-color: #333;
+            color: #333;
         }
 
         @media screen and (min-width: 700px) {
