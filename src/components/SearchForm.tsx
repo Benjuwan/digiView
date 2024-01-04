@@ -46,50 +46,68 @@ export const SearchForm: FC<SearchFormProps> = memo((props) => {
             searchTargetDigimon();
         }}>
             <p>※なりたいデジモンがいる場合は【英語名】で入力してください</p>
-            <input type="text" value={isDigiNameValue} onInput={(inputElm: ChangeEvent<HTMLInputElement>) => setDigiName(inputElm.currentTarget)} />
-            <button type="button" onClick={searchTargetDigimon}>になりたい</button>
+            <div>
+                <input type="text" value={isDigiNameValue} onInput={(inputElm: ChangeEvent<HTMLInputElement>) => setDigiName(inputElm.currentTarget)} />
+                <button type="button" onClick={searchTargetDigimon}>になりたい</button>
+            </div>
         </DigiSearchForm>
     );
 });
 
 const DigiSearchForm = styled.form`
+font-size: 1.4rem;
+
+@media screen and (min-width: 700px) {
+    font-size: 14px;
+}
+
 & p {
     text-indent: -1em;
     padding-left: 1em;
+    margin-bottom: .5em;
 }
 
-& input[type="text"]{
-    font-size: 1.6rem;
-    width: clamp(16rem, 100%, 24rem);
-    padding-left: .25em;
-    line-height: 4.4rem;
+& div {
+    display: flex;
+    align-items: flex-start;
+    gap: 1%;
 
-    @media screen and (min-width: 700px) {
-        font-size: 16px;
-        width: clamp(160px, 100%, 320px);
-        line-height: 44px;
-    }
-}
+    & input[type="text"]{
+        font-size: 1.6rem;
+        width: clamp(16rem, 100%, 24rem);
+        padding-left: .25em;
+        line-height: 2;
+        padding: 1.5em 0;
 
-& button {
-    cursor: pointer;
-    appearance: none;
-    background-color: #333;
-    color: #fff;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    margin-left: .5em;
-    transition: all .25s;
-    line-height: 4.4rem;
-
-    &:hover {
-        background-color: #fff;
-        color: #333;
-        border-color: #333;
+        @media screen and (min-width: 700px) {
+            font-size: 16px;
+            width: clamp(160px, 100%, 320px);
+            line-height: 44px;
+            padding: 0;
+        }
     }
 
-    @media screen and (min-width: 700px) {
-        line-height: 44px;
+    & button {
+        cursor: pointer;
+        appearance: none;
+        background-color: #333;
+        color: #fff;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        transition: all .25s;
+        line-height: 2;
+        padding: 1em 0;
+
+        &:hover {
+            background-color: #fff;
+            color: #333;
+            border-color: #333;
+        }
+
+        @media screen and (min-width: 700px) {
+            line-height: 44px;
+            padding: 0 .5em;
+        }
     }
 }
 `;

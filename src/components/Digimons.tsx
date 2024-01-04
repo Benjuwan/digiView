@@ -185,7 +185,7 @@ padding: 0 2.5em;
     & h3 {
         width: 100%;
         font-size: 1.6rem;
-        margin: 0;
+        margin: 0 0 .5em 0;
         
         & span {
             display: block;
