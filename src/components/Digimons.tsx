@@ -83,7 +83,7 @@ export const Digimons: FC<DigimonsType> = memo(({ randNum }) => {
                         }
                         {priorEvolutions.length > 0 ?
                             <div className="evolutions">
-                                <h3>あなたの軌跡<span>（※進化前）</span></h3>
+                                <h3>あなたの経歴<span>（※進化前）</span></h3>
                                 <>
                                     {priorEvolutions.map((evolution, i) => (
                                         <div className="evolutionChildren" key={i}>

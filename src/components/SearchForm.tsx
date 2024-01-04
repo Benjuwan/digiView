@@ -69,7 +69,6 @@ font-size: 1.4rem;
 
 & div {
     display: flex;
-    align-items: flex-start;
     gap: 1%;
 
     & input[type="text"]{
@@ -77,7 +76,6 @@ font-size: 1.4rem;
         width: clamp(16rem, 100%, 24rem);
         padding-left: .25em;
         line-height: 2;
-        padding: 1.5em 0;
 
         @media screen and (min-width: 700px) {
             font-size: 16px;
