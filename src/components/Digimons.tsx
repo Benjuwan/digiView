@@ -1,6 +1,7 @@
-import { ChangeEvent, FC, memo, useCallback, useEffect, useState } from "react";
+import { FC, memo, useEffect, useState } from "react";
 import styled from "styled-components";
 import { digimons, evolutions } from "../ts/digimon";
+import { SearchForm } from "./SearchForm";
 import { useFecthDigimon } from "../hooks/useFecthDigimon";
 import { useSetDigimonItems } from "../hooks/useSetDigimonItems";
 
@@ -9,30 +10,15 @@ type DigimonsType = {
 }
 
 export const Digimons: FC<DigimonsType> = memo(({ randNum }) => {
-    const { FetchDigimons_Number, FetchDigimons_Name } = useFecthDigimon();
+    const { FetchDigimons_Number } = useFecthDigimon();
     const { SetDigimonItems } = useSetDigimonItems();
 
+    const [isDigiNameValue, setDigiNameValue] = useState<string>(''); // デジモンの検索用（input text の）State
     const [isDigimonData, setDigimonData] = useState<digimons>(); // デジモンの総合データ
     const [isDescriptions, setDescriptions] = useState<string>(''); // デジモンの紹介文
     const [nextEvolutions, setNextEvolutions] = useState<evolutions[]>([]); // 進化後のデジモンデータ
     const [priorEvolutions, setPriorEvolutions] = useState<evolutions[]>([]); // 進化前のデジモンデータ
     const [isType, setType] = useState<string[]>([]); // デジモンのタイプ
-
-    /* 希望するデジモンを（英語名で）検索 */
-    const [isDigiNameValue, setDigiNameValue] = useState<string>('');
-    const setDigiName = (inputElm: HTMLInputElement) => {
-        const inputElmValue: string = inputElm.value;
-        setDigiNameValue((_prevDigiNameValue) => inputElmValue);
-
-        /* 入力値が 0 の場合は初期化 */
-        if (inputElmValue.length <= 0) {
-            setDigimonData(undefined);
-            setDescriptions('');
-            setNextEvolutions([]);
-            setPriorEvolutions([]);
-            setType([]);
-        }
-    }
 
     /* ランダム数値でのデータ取得及び反映 */
     useEffect(() => {
@@ -48,32 +34,21 @@ export const Digimons: FC<DigimonsType> = memo(({ randNum }) => {
         setDigiNameValue((_prevDigiNameValue) => '');
     }, [randNum]); // 依存配列 randNum：ランダム数値が変更する度に処理
 
-    /* デジモン検索でのデータ取得及び反映 */
-    const searchTargetDigimon = useCallback(() => {
-        const fetchDigiData = FetchDigimons_Name(isDigiNameValue);
-        SetDigimonItems(
-            fetchDigiData,
-            setDigimonData,
-            setDescriptions,
-            setNextEvolutions,
-            setPriorEvolutions,
-            setType
-        );
-    }, [isDigiNameValue]);
-
     // console.log(isDigimonData);
 
     return (
         <>
 
             <DigimonContent>
-                <form onSubmit={(formElm: ChangeEvent<HTMLFormElement>) => {
-                    formElm.preventDefault();
-                    searchTargetDigimon();
-                }}>
-                    <p>※希望するデジモンがいる場合は【英語名】で入力してください</p>
-                    <input type="text" value={isDigiNameValue} onInput={(inputElm: ChangeEvent<HTMLInputElement>) => setDigiName(inputElm.currentTarget)} />
-                </form>
+                <SearchForm
+                    isDigiNameValue={isDigiNameValue}
+                    setDigiNameValue={setDigiNameValue}
+                    setDigimonData={setDigimonData}
+                    setDescriptions={setDescriptions}
+                    setNextEvolutions={setNextEvolutions}
+                    setPriorEvolutions={setPriorEvolutions}
+                    setType={setType}
+                />
                 <div className="digimonContent">
                     <div className="digimonContentChildren">
                         {isDigimonData?.name &&
@@ -134,10 +109,12 @@ width: clamp(16rem, 100%, 48rem);
 margin: auto;
 font-size: 1.4rem;
 line-height: 2;
+padding: 0 2.5em;
 
 @media screen and (min-width: 700px) {
     width: clamp(160px, 100%, 480px);
     font-size: 14px;
+    padding: 0;
 }
 
 @media screen and (min-width: 1025px) {
@@ -158,19 +135,6 @@ line-height: 2;
                     padding-top: 0;
                 }
             }
-        }
-    }
-}
-
-& form {
-    & input[type="text"]{
-        font-size: 1.6rem;
-        width: clamp(16rem, 100%, 24rem);
-        padding-left: .25em;
-        
-        @media screen and (min-width: 700px) {
-            font-size: 16px;
-            width: clamp(160px, 100%, 320px);
         }
     }
 }

@@ -34,7 +34,7 @@ display: block;
 width: clamp(16rem, calc(100vw/2), 32rem);
 line-height: 4.4rem;
 letter-spacing: 0.25em;
-margin: 1em auto 5em;
+margin: 2.5em auto;
 appearance: none;
 border-radius: 4px;
 border: 1px solid transparent;
