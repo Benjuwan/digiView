@@ -11,7 +11,7 @@ export const App = () => {
     <>
       <Header style={basicStyle} />
       <DigiComponent />
-      <Footer style={basicStyle} />
+      <Footer />
     </>
   );
 }

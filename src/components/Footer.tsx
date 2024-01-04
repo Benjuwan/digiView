@@ -1,18 +1,10 @@
-import { FC, memo, useMemo } from "react";
+import { memo, useMemo } from "react";
 
-type propsStyle = {
-    style: object;
-}
-/* propsStyle を継承（もどき）*/
-type footerStyle = propsStyle & {
-    'fontSize': '12px'
-}
-
-export const Footer: FC<footerStyle> = memo(({ style }) => {
+export const Footer = memo(() => {
     const currentYear: number = useMemo(() => new Date().getFullYear(), []);
 
     return (
-        <footer style={style}>
+        <footer style={{ 'fontSize': '12px', 'textAlign': 'center' }}>
             <p><small>&copy; {currentYear} Anata ha NANIMON ?</small></p>
         </footer>
     );
