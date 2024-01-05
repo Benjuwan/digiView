@@ -6,6 +6,8 @@
 
 [DAPI（Digimon API）](https://digimon-api.com/)を使ったデジモンの閲覧サイト。「今日のあなたはナニモン？」というコンセプトで制作。ボタン押下で適当なデジモンが表示され、希望するデジモンがいる場合はフォームから**英語名**で指定して表示することも可能です。<br />
 
+***
+
 ![digiView-1](https://github.com/Benjuwan/digiView/assets/90702379/53940689-6a9b-4899-be02-d9250b91abcf)
 
 ***
