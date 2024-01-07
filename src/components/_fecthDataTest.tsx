@@ -13,15 +13,7 @@ export const FDT = () => {
             const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=10');
             const resObj = await response.json();
             const pokemons: pokeType[] = resObj.results;
-            const newAry: pokeType[] = pokemons.map(poke => {
-                // console.log(poke);
-                const newAry = {
-                    name: poke.name,
-                    url: poke.url
-                }
-                return newAry;
-            });
-            setPoke((_prevPoke) => newAry);
+            setPoke((_prevPoke) => [...isPoke, ...pokemons]);
         }
         fetchPokeData();
     }, []);
