@@ -2,8 +2,6 @@
 
 制作期間：2024/01/03<br />
 
-公開サイト：[https://digi-view-api.vercel.app/](https://digi-view-api.vercel.app/)
-
 [DAPI（Digimon API）](https://digimon-api.com/)を使ったデジモンの閲覧サイト。「今日のあなたはナニモン？」というコンセプトで制作。ボタン押下で適当なデジモンが表示され、希望するデジモンがいる場合はフォームから**英語名**で指定して表示することも可能です。<br />
 
 ***
@@ -17,10 +15,17 @@
 ※参考情報：<br />
 [READMEファイルにGif動画を載せる方法](https://qiita.com/00__/items/e3e3e44394ef85e8fecf)
 
-## 使用技術
-- React
-- TypeScript
-- styled-components
-
-## 備忘録
-ビルド及びホスティング用のフォルダは当ファイルの`dist`なので、ビルド後のホスティングはターミナルから`cd dist`で移動して操作すること。<br />**フォルダ位置の確認を必ず行う**こと。
+## 技術構成
+- @types/react-dom@18.2.18
+- @types/react@18.2.46
+- @typescript-eslint/eslint-plugin@6.17.0
+- @typescript-eslint/parser@6.17.0
+- @vitejs/plugin-react@4.2.1
+- eslint-plugin-react-hooks@4.6.0
+- eslint-plugin-react-refresh@0.4.5
+- eslint@8.56.0
+- react-dom@18.2.0
+- react@18.2.0
+- styled-components@6.1.6
+- typescript@5.3.3
+- vite@5.4.11

@@ -22,7 +22,7 @@ export const useSetDigimonItems = () => {
                 /* デジモンの紹介文（日本語）*/
                 data?.descriptions.forEach(digiDescriptionData => {
                     if (digiDescriptionData.language === 'jap') {
-                        setDescriptions((_prevDescriptions) => digiDescriptionData.description)
+                        setDescriptions(digiDescriptionData.description)
                     }
                 });
 
@@ -41,7 +41,7 @@ export const useSetDigimonItems = () => {
                         nextEvolutionAry.push(nextEvolutionData);
                     }
                 });
-                setNextEvolutions((_prevNextEvolution) => nextEvolutionAry);
+                setNextEvolutions(nextEvolutionAry);
 
                 // 進化前
                 const priorEvolutionAry: evolutions[] = [];
@@ -54,14 +54,14 @@ export const useSetDigimonItems = () => {
                         priorEvolutionAry.push(priorEvolutionData);
                     }
                 });
-                setPriorEvolutions((_prevtPriorEvolution) => priorEvolutionAry);
+                setPriorEvolutions(priorEvolutionAry);
 
                 /* タイプ */
                 const typeBox: string[] = [];
                 data?.types.forEach(type => {
                     typeBox.push(type.type);
                 });
-                setType((_prevType) => typeBox);
+                setType(typeBox);
             });
         }
 

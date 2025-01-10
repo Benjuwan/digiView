@@ -23,7 +23,7 @@ export const SearchForm: FC<SearchFormProps> = memo((props) => {
     /* 希望するデジモンを（英語名で）検索 */
     const setDigiName: (inputElm: HTMLInputElement) => void = (inputElm: HTMLInputElement) => {
         const inputElmValue: string = inputElm.value;
-        setDigiNameValue((_prevDigiNameValue) => inputElmValue);
+        setDigiNameValue(inputElmValue);
     }
 
     /* デジモン検索でのデータ取得及び反映 */
@@ -37,7 +37,8 @@ export const SearchForm: FC<SearchFormProps> = memo((props) => {
             setPriorEvolutions,
             setType
         );
-        setDigiNameValue((_prevDigiNameValue) => '');
+        setDigiNameValue('');
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isDigiNameValue]);
 
     return (
