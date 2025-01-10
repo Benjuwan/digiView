@@ -14,11 +14,11 @@ export const DigimonViewBtn: FC<DigimonViewBtnType> = memo(({ setFirstRenderChec
         const allDigimonNumbers: Promise<digimonData> = FetchDigimonData();
         // console.log(allDigimonNumbers);
 
-        /* Promise の中身（PromiseResult）を触る */
+        /* Promise の中身（PromiseResult）を触る */
         allDigimonNumbers.then((data) => {
             const randNum: number = Math.floor(Math.random() * data.pageable.totalElements);
-            if (randNum === 0) setRandNum((_prevRandNum) => 1);
-            else setRandNum((_prevRandNum) => randNum);
+            if (randNum === 0) setRandNum(1);
+            else setRandNum(randNum);
             setFirstRenderCheck(false);
         });
     }

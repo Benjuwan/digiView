@@ -31,7 +31,8 @@ export const Digimons: FC<DigimonsType> = memo(({ randNum }) => {
             setPriorEvolutions,
             setType
         );
-        setDigiNameValue((_prevDigiNameValue) => '');
+        setDigiNameValue('');
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [randNum]); // 依存配列 randNum：ランダム数値が変更する度に処理
 
     // console.log(isDigimonData);

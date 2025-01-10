@@ -13,9 +13,10 @@ export const FDT = () => {
             const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=10');
             const resObj = await response.json();
             const pokemons: pokeType[] = resObj.results;
-            setPoke((_prevPoke) => [...isPoke, ...pokemons]);
+            setPoke([...isPoke, ...pokemons]);
         }
         fetchPokeData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     // console.log(isPoke);
