@@ -20,7 +20,7 @@
 - @types/react@18.2.46
 - @typescript-eslint/eslint-plugin@6.17.0
 - @typescript-eslint/parser@6.17.0
-- @vitejs/plugin-react@4.2.1
+- @vitejs/plugin-react@1.3.2
 - eslint-plugin-react-hooks@4.6.0
 - eslint-plugin-react-refresh@0.4.5
 - eslint@8.56.0
@@ -28,4 +28,4 @@
 - react@18.2.0
 - styled-components@6.1.6
 - typescript@5.3.3
-- vite@5.4.11
+- vite@6.2.0
