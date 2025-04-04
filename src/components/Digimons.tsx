@@ -1,5 +1,4 @@
 import { FC, memo, useEffect, useState } from "react";
-import styled from "styled-components";
 import { digimons, evolutions } from "../ts/digimon";
 import { SearchForm } from "./SearchForm";
 import { useFecthDigimon } from "../hooks/useFecthDigimon";
@@ -40,7 +39,7 @@ export const Digimons: FC<DigimonsType> = memo(({ randNum }) => {
     return (
         <>
 
-            <DigimonContent>
+            <div className="w-[clamp(10rem,100%,30rem)] m-auto px-[2.5em] text-[0.875rem] leading-[2] md:w-[clamp(160px,100%,480px)] p-0 text-[14px] lg:w-[clamp(160px,100%,960px)] lg:mb-[5em]">
                 <SearchForm
                     isDigiNameValue={isDigiNameValue}
                     setDigiNameValue={setDigiNameValue}
@@ -50,12 +49,12 @@ export const Digimons: FC<DigimonsType> = memo(({ randNum }) => {
                     setPriorEvolutions={setPriorEvolutions}
                     setType={setType}
                 />
-                <div className="digimonContent">
-                    <div className="digimonContentChildren">
+                <div className="lg:flex lg:flex-wrap lg:flex-row lg:justify-between lg:gap-[4%]">
+                    <div className="lg:w-[48%]">
                         {isDigimonData?.name &&
-                            <h2><span>No.{isDigimonData?.id}：</span>今日のあなたは【{isDigimonData?.name}】</h2>
+                            <h2 className="font-normal text-[1.5rem] leading-[1.4] border-b border-dotted border-b-[#333] pb-[0.5em] md:text-[24px]"><span className="text-[0.75rem] block md:text-[12px]">No.{isDigimonData?.id}：</span>今日のあなたは【{isDigimonData?.name}】</h2>
                         }
-                        <img className="thumbnail" src={isDigimonData?.images[0].href} alt={isDigimonData?.name} />
+                        <img className="px-[5em]" src={isDigimonData?.images[0].href} alt={isDigimonData?.name} />
                         {isType.length > 0 &&
                             <p className="type">タイプ：
                                 {isType.map((type, i) => (
@@ -63,172 +62,44 @@ export const Digimons: FC<DigimonsType> = memo(({ randNum }) => {
                                 ))}
                             </p>
                         }
-                        {isDescriptions && <p className="description">{isDescriptions}</p>}
+                        {isDescriptions && <p className="bg-[#dadada] p-[0.5em] rounded">{isDescriptions}</p>}
                     </div>
-                    <div className="digimonContentChildren">
+                    <div className="lg:w-[48%]">
                         {nextEvolutions.length > 0 ?
-                            <div className="evolutions">
-                                <h3>あなたの将来性<span>（※進化後）</span></h3>
+                            <div className="flex flex-row flex-wrap gap-[2%] text-[0.875rem] py-[2.5em] mb-[2.5em] border-b-[#333] border-b-[dotted] md:p-0">
+                                <h3 className="w-full text-[1rem] mb-[0.5em]">あなたの将来性<span className="block text-[0.875rem] leading-[1.2]">（※進化後）</span></h3>
                                 <>
                                     {nextEvolutions.map((evolution, i) => (
-                                        <div className="evolutionChildren" key={i}>
-                                            <p>{evolution.digimon}</p>
-                                            <img src={evolution.image} alt={evolution.digimon} />
+                                        <div className="text-center mb-[2%] w-[49%] p-[1em] bg-[#dadada] rounded md:w-[32%]" key={i}>
+                                            <p className="wrap-anywhere m-0 leading-[2]">{evolution.digimon}</p>
+                                            <img className="rounded" src={evolution.image} alt={evolution.digimon} />
                                         </div>
                                     ))}
                                 </>
                             </div> :
-                            <div className="evolutions">
-                                <h3>将来性なし<span>（※進化後のデータがありません）</span></h3>
+                            <div className="flex flex-row flex-wrap gap-[2%] text-[0.875rem] md:text-[14px]">
+                                <h3 className="w-full text-[1rem] mb-[0.5em]">将来性なし<span className="block text-[0.875rem] leading-[1.2]">（※進化後のデータがありません）</span></h3>
                             </div>
                         }
                         {priorEvolutions.length > 0 ?
-                            <div className="evolutions">
-                                <h3>あなたの経歴<span>（※進化前）</span></h3>
+                            <div className="flex flex-row flex-wrap gap-[2%] text-[0.875rem] md:text-[14px]">
+                                <h3 className="w-full text-[1rem] mb-[0.5em]">あなたの経歴<span className="block text-[0.875rem] leading-[1.2]">（※進化前）</span></h3>
                                 <>
                                     {priorEvolutions.map((evolution, i) => (
-                                        <div className="evolutionChildren" key={i}>
-                                            <p>{evolution.digimon}</p>
-                                            <img src={evolution.image} alt={evolution.digimon} />
+                                        <div className="text-center mb-[2%] w-[49%] p-[1em] bg-[#dadada] rounded md:w-[32%]" key={i}>
+                                            <p className="wrap-anywhere m-0 leading-[2]">{evolution.digimon}</p>
+                                            <img className="rounded" src={evolution.image} alt={evolution.digimon} />
                                         </div>
                                     ))}
                                 </>
                             </div> :
-                            <div className="evolutions">
-                                <h3>経歴不明<span>（※進化前のデータがありません）</span></h3>
+                            <div className="flex flex-row flex-wrap gap-[2%] text-[0.875rem] md:text-[14px]">
+                                <h3 className="w-full text-[1rem] mb-[0.5em]">経歴不明<span className="block text-[0.875rem] leading-[1.2]">（※進化前のデータがありません）</span></h3>
                             </div>
                         }
                     </div>
                 </div>
-            </DigimonContent>
+            </div>
         </>
     );
-})
-
-const DigimonContent = styled.div`
-width: clamp(16rem, 100%, 48rem);
-margin: auto;
-font-size: 1.4rem;
-line-height: 2;
-padding: 0 2.5em;
-
-@media screen and (min-width: 700px) {
-    width: clamp(160px, 100%, 480px);
-    font-size: 14px;
-    padding: 0;
-}
-
-@media screen and (min-width: 1025px) {
-    width: clamp(160px, 100%, 960px);
-    margin-bottom: 5em;
-
-    & .digimonContent {
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: space-between;
-        gap: 4%;
-
-        & .digimonContentChildren {
-            width: 48%;
-
-        & .evolutions {
-            &:first-of-type {
-                    padding-top: 0;
-                }
-            }
-        }
-    }
-}
-
-& .thumbnail {
-    padding: 0 5em;
-}
-
-& h2 {
-    font-weight: normal;
-    font-size: 2.4rem;
-    line-height: 1.4;
-    border-bottom: 1px dotted #333;
-    padding-bottom: .5em;
-
-    & span {
-        font-size: 1.2rem;
-        display: block;
-    }
-
-    @media screen and (min-width: 700px) {
-        font-size: 24px;
-
-        & span {
-            font-size: 12px;
-        }
-    }
-}
-
-& .description {
-    background-color: #dadada;
-    padding: .5em;
-    border-radius: 4px;
-}
-
-& .evolutions {
-    display: flex;
-    flex-flow: row wrap;
-    gap: 2%;
-    font-size: 1.4rem;
-
-    &:first-of-type {
-        padding: 2.5em 0;
-        margin-bottom: 2.5em;
-        border-bottom: 1px dotted #333;
-    }
-    
-    & h3 {
-        width: 100%;
-        font-size: 1.6rem;
-        margin: 0 0 .5em 0;
-        
-        & span {
-            display: block;
-            font-weight: normal;
-            font-size: 1.4rem;
-            line-height: 1.2;
-        }
-    }
-
-    & .evolutionChildren {
-        text-align: center;
-        margin-bottom: 2%;
-        width: 49%;
-        padding: 1em;
-        background-color: #eaeaea;
-        border-radius: 4px;
-        
-        & p {
-            overflow-wrap: anywhere;
-            margin: 0;
-            line-height: 2;
-        }
-        
-        & img {
-            border-radius: 4px;
-        }
-    }
-
-    @media screen and (min-width: 700px) {
-        font-size: 14px;
-
-        & h3 {
-            font-size: 16px;
-
-            & span {
-                font-size: 14px;
-            }
-        }
-
-        & .evolutionChildren {
-            width: 32%;
-        }
-    }
-}
-`;
+});
