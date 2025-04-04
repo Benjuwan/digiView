@@ -1,18 +1,9 @@
 import { FC, memo } from "react";
 
-type headerType = {
-    style: object;
-}
-
-export const Header: FC<headerType> = memo(({ style }) => {
-    const ankerStyle: object = {
-        'fontSize': '12px',
-        'color': '#333'
-    }
-
+export const Header: FC = memo(() => {
     return (
-        <header style={style}>
-            <a style={ankerStyle} href="https://digimon-api.com/" target="_blank">DAPI（Digimon API）を使っています</a>
+        <header className="text-center">
+            <a className="text-[12px] text-[#333]" href="https://digimon-api.com/" target="_blank">DAPI（Digimon API）を使っています</a>
         </header>
     );
 });

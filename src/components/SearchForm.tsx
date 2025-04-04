@@ -1,5 +1,4 @@
-import { FC, ChangeEvent, memo, useCallback } from "react";
-import styled from "styled-components";
+import { FC, ChangeEvent, memo, useCallback, SyntheticEvent } from "react";
 import { digimons, evolutions } from "../ts/digimon";
 import { useFecthDigimon } from "../hooks/useFecthDigimon";
 import { useSetDigimonItems } from "../hooks/useSetDigimonItems";
@@ -41,78 +40,18 @@ export const SearchForm: FC<SearchFormProps> = memo((props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isDigiNameValue]);
 
+    const handleFormSubmitAction: (e: SyntheticEvent<HTMLFormElement>) => void = (e: SyntheticEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        searchTargetDigimon();
+    }
+
     return (
-        <DigiSearchForm onSubmit={(formElm: ChangeEvent<HTMLFormElement>) => {
-            formElm.preventDefault();
-            searchTargetDigimon();
-        }}>
-            <p>※なりたいデジモンがいる場合は【英語名】で入力してください</p>
-            <div>
-                <input type="text" value={isDigiNameValue} onInput={(inputElm: ChangeEvent<HTMLInputElement>) => setDigiName(inputElm.currentTarget)} />
-                <button disabled={isDigiNameValue.length <= 0} type="button" onClick={searchTargetDigimon}>になりたい</button>
+        <form className="text-[0.875rem] md:text-[14px]" onSubmit={handleFormSubmitAction}>
+            <p className="indent-[-1em] pl-[1em] mb-[0.5em]">※なりたいデジモンがいる場合は【英語名】で入力してください</p>
+            <div className="flex gap-[1%] mb-[1em]">
+                <input type="text" className="text-[1rem] w-[clamp(10rem,100%,15rem)] border border-[#dadada] rounded pl-[0.25em] leading-[2] md:w-[clamp(160px,100%,320px)] md:leading-[44px] md:p-0" value={isDigiNameValue} onInput={(inputElm: ChangeEvent<HTMLInputElement>) => setDigiName(inputElm.currentTarget)} />
+                <button className="appearance-none cursor-pointer text-[#fff] bg-[#333] border border-transparent rounded duration-[.25s] leading-[2] p-[0.5em] disabled:cursor-default disabled:text-[#333] disabled:bg-[#dadada] not-disabled:hover:bg-white not-disabled:hover:border-[#333] not-disabled:hover:text-[#333] md:leading-[44px] py-0" disabled={isDigiNameValue.length <= 0} type="button" onClick={searchTargetDigimon}>になりたい</button>
             </div>
-        </DigiSearchForm>
+        </form>
     );
 });
-
-const DigiSearchForm = styled.form`
-font-size: 1.4rem;
-
-@media screen and (min-width: 700px) {
-    font-size: 14px;
-}
-
-& p {
-    text-indent: -1em;
-    padding-left: 1em;
-    margin-bottom: .5em;
-}
-
-& div {
-    display: flex;
-    gap: 1%;
-
-    & input[type="text"]{
-        font-size: 1.6rem;
-        width: clamp(16rem, 100%, 24rem);
-        padding-left: .25em;
-        line-height: 2;
-
-        @media screen and (min-width: 700px) {
-            font-size: 16px;
-            width: clamp(160px, 100%, 320px);
-            line-height: 44px;
-            padding: 0;
-        }
-    }
-
-    & button {
-        cursor: pointer;
-        appearance: none;
-        background-color: #333;
-        color: #fff;
-        border: 1px solid transparent;
-        border-radius: 4px;
-        transition: all .25s;
-        line-height: 2;
-        padding: 1em .5em;
-
-        &[disabled]{
-            cursor: default;
-            color: #333;
-            background-color: #dadada;
-        }
-
-        &:not([disabled]):hover{
-            background-color: #fff;
-            border-color: #333;
-            color: #333;
-        }
-
-        @media screen and (min-width: 700px) {
-            line-height: 44px;
-            padding: 0 .5em;
-        }
-    }
-}
-`;
