@@ -39,7 +39,7 @@ export const Digimons: FC<DigimonsType> = memo(({ randNum }) => {
     return (
         <>
 
-            <div className="w-[clamp(10rem,100%,30rem)] m-auto px-[2.5em] text-[0.875rem] leading-[2] md:w-[clamp(160px,100%,480px)] p-0 text-[14px] lg:w-[clamp(160px,100%,960px)] lg:mb-[5em]">
+            <div className="w-[clamp(10rem,100%,60rem)] m-auto px-[2.5em] text-sm leading-[2] p-0 lg:mb-[5em]">
                 <SearchForm
                     isDigiNameValue={isDigiNameValue}
                     setDigiNameValue={setDigiNameValue}
@@ -52,7 +52,7 @@ export const Digimons: FC<DigimonsType> = memo(({ randNum }) => {
                 <div className="lg:flex lg:flex-wrap lg:flex-row lg:justify-between lg:gap-[4%]">
                     <div className="lg:w-[48%]">
                         {isDigimonData?.name &&
-                            <h2 className="font-normal text-[1.5rem] leading-[1.4] border-b border-dotted border-b-[#333] pb-[0.5em] md:text-[24px]"><span className="text-[0.75rem] block md:text-[12px]">No.{isDigimonData?.id}：</span>今日のあなたは【{isDigimonData?.name}】</h2>
+                            <h2 className="font-normal text-lg leading-[1.4] border-b border-dotted border-b-[#333] pb-[0.5em]"><span className="text-xs block">No.{isDigimonData?.id}：</span>今日のあなたは【{isDigimonData?.name}】</h2>
                         }
                         <img className="px-[5em]" src={isDigimonData?.images[0].href} alt={isDigimonData?.name} />
                         {isType.length > 0 &&
@@ -66,35 +66,35 @@ export const Digimons: FC<DigimonsType> = memo(({ randNum }) => {
                     </div>
                     <div className="lg:w-[48%]">
                         {nextEvolutions.length > 0 ?
-                            <div className="flex flex-row flex-wrap gap-[2%] text-[0.875rem] py-[2.5em] mb-[2.5em] border-b-[#333] border-b-[dotted] md:p-0">
-                                <h3 className="w-full text-[1rem] mb-[0.5em]">あなたの将来性<span className="block text-[0.875rem] leading-[1.2]">（※進化後）</span></h3>
+                            <div className="flex flex-row flex-wrap gap-[2%] text-sm py-[2.5em] mb-[2.5em] border-b-[#333] border-b-[dotted] md:p-0">
+                                <h3 className="w-full text-base mb-[0.5em]">あなたの将来性<span className="block text-sm leading-[1.2]">（※進化後）</span></h3>
                                 <>
                                     {nextEvolutions.map((evolution, i) => (
                                         <div className="text-center mb-[2%] w-[49%] p-[1em] bg-[#dadada] rounded md:w-[32%]" key={i}>
-                                            <p className="wrap-anywhere m-0 leading-[2]">{evolution.digimon}</p>
+                                            <p className="wrap-anywhere m-0 leading-[1.5]">{evolution.digimon}</p>
                                             <img className="rounded" src={evolution.image} alt={evolution.digimon} />
                                         </div>
                                     ))}
                                 </>
                             </div> :
-                            <div className="flex flex-row flex-wrap gap-[2%] text-[0.875rem] md:text-[14px]">
-                                <h3 className="w-full text-[1rem] mb-[0.5em]">将来性なし<span className="block text-[0.875rem] leading-[1.2]">（※進化後のデータがありません）</span></h3>
+                            <div className="flex flex-row flex-wrap gap-[2%] text-sm">
+                                <h3 className="w-full text-base mb-[0.5em]">将来性なし<span className="block text-sm leading-[1.2]">（※進化後のデータがありません）</span></h3>
                             </div>
                         }
                         {priorEvolutions.length > 0 ?
-                            <div className="flex flex-row flex-wrap gap-[2%] text-[0.875rem] md:text-[14px]">
-                                <h3 className="w-full text-[1rem] mb-[0.5em]">あなたの経歴<span className="block text-[0.875rem] leading-[1.2]">（※進化前）</span></h3>
+                            <div className="flex flex-row flex-wrap gap-[2%] text-sm">
+                                <h3 className="w-full text-base mb-[0.5em]">あなたの経歴<span className="block text-sm leading-[1.2]">（※進化前）</span></h3>
                                 <>
                                     {priorEvolutions.map((evolution, i) => (
                                         <div className="text-center mb-[2%] w-[49%] p-[1em] bg-[#dadada] rounded md:w-[32%]" key={i}>
-                                            <p className="wrap-anywhere m-0 leading-[2]">{evolution.digimon}</p>
+                                            <p className="wrap-anywhere m-0 leading-[1.5]">{evolution.digimon}</p>
                                             <img className="rounded" src={evolution.image} alt={evolution.digimon} />
                                         </div>
                                     ))}
                                 </>
                             </div> :
-                            <div className="flex flex-row flex-wrap gap-[2%] text-[0.875rem] md:text-[14px]">
-                                <h3 className="w-full text-[1rem] mb-[0.5em]">経歴不明<span className="block text-[0.875rem] leading-[1.2]">（※進化前のデータがありません）</span></h3>
+                            <div className="flex flex-row flex-wrap gap-[2%] text-sm">
+                                <h3 className="w-full text-base mb-[0.5em]">経歴不明<span className="block text-sm leading-[1.2]">（※進化前のデータがありません）</span></h3>
                             </div>
                         }
                     </div>

@@ -16,7 +16,7 @@
 [READMEファイルにGif動画を載せる方法](https://qiita.com/00__/items/e3e3e44394ef85e8fecf)
 
 ## 技術構成
-- @tailwindcss/vite@4.1.2
+- @tailwindcss/vite@4.1.3
 - @types/react-dom@18.3.6
 - @types/react@18.3.20
 - @typescript-eslint/eslint-plugin@6.21.0
@@ -27,6 +27,6 @@
 - eslint@8.57.1
 - react-dom@18.3.1
 - react@18.3.1
-- tailwindcss@4.1.2
-- typescript@5.8.2
-- vite@6.2.5
+- tailwindcss@4.1.3
+- typescript@5.8.3
+- vite@6.2.6
