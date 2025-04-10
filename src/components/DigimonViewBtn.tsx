@@ -31,6 +31,6 @@ export const DigimonViewBtn: FC<DigimonViewBtnType> = memo(({ setFirstRenderChec
     }
 
     return (
-        <button type="button" className="cursor-pointer block w-[clamp(10rem,calc(100vw/2),20rem)] leading-[2] p-[1em] tracking-[0.25em] my-[2.5em] mx-auto rounded border border-transparent text-white bg-[#333] transition duration-[.25s] md:w-[clamp(320px,100%,480px)] md:leading-[44px] md:p-0 disabled:cursor-default disabled:bg-[#dadada] disabled:text-[#333] not-disabled:hover:bg-white not-disabled:hover:border-[#333] not-disabled:hover:text-[#333]" onClick={digimonView}>あなたがナニモンかチェック</button>
+        <button type="button" className="cursor-pointer block w-[clamp(10rem,calc(100vw/2),20rem)] leading-[2.75rem] p-[1em] tracking-[0.25em] my-[2.5em] mx-auto rounded border border-transparent text-white bg-[#333] transition duration-[.25s] md:w-[clamp(320px,100%,480px)] md:p-0 disabled:cursor-default disabled:bg-[#dadada] disabled:text-[#333] not-disabled:hover:bg-white not-disabled:hover:border-[#333] not-disabled:hover:text-[#333]" onClick={digimonView}>あなたがナニモンかチェック</button>
     );
 });

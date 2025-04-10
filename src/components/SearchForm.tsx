@@ -46,11 +46,11 @@ export const SearchForm: FC<SearchFormProps> = memo((props) => {
     }
 
     return (
-        <form className="text-[0.875rem] md:text-[14px]" onSubmit={handleFormSubmitAction}>
+        <form className="text-sm" onSubmit={handleFormSubmitAction}>
             <p className="indent-[-1em] pl-[1em] mb-[0.5em]">※なりたいデジモンがいる場合は【英語名】で入力してください</p>
             <div className="flex gap-[1%] mb-[1em]">
-                <input type="text" className="text-[1rem] w-[clamp(10rem,100%,15rem)] border border-[#dadada] rounded pl-[0.25em] leading-[2] md:w-[clamp(160px,100%,320px)] md:leading-[44px] md:p-0" value={isDigiNameValue} onInput={(inputElm: ChangeEvent<HTMLInputElement>) => setDigiName(inputElm.currentTarget)} />
-                <button className="appearance-none cursor-pointer text-[#fff] bg-[#333] border border-transparent rounded duration-[.25s] leading-[2] p-[0.5em] disabled:cursor-default disabled:text-[#333] disabled:bg-[#dadada] not-disabled:hover:bg-white not-disabled:hover:border-[#333] not-disabled:hover:text-[#333] md:leading-[44px] py-0" disabled={isDigiNameValue.length <= 0} type="button" onClick={searchTargetDigimon}>になりたい</button>
+                <input type="text" className="text-[1rem] w-[clamp(10rem,100%,15rem)] border border-[#dadada] rounded pl-[0.25em] leading-[2.75rem] md:w-[clamp(160px,100%,320px)] md:p-0" value={isDigiNameValue} onInput={(inputElm: ChangeEvent<HTMLInputElement>) => setDigiName(inputElm.currentTarget)} />
+                <button className="appearance-none cursor-pointer text-[#fff] bg-[#333] border border-transparent rounded duration-[.25s] leading-[2.75rem] p-[0.5em] disabled:cursor-default disabled:text-[#333] disabled:bg-[#dadada] not-disabled:hover:bg-white not-disabled:hover:border-[#333] not-disabled:hover:text-[#333] py-0" disabled={isDigiNameValue.length <= 0} type="button" onClick={searchTargetDigimon}>になりたい</button>
             </div>
         </form>
     );
