@@ -66,7 +66,7 @@ export const Digimons: FC<DigimonsType> = memo(({ randNum }) => {
                     </div>
                     <div className="lg:w-[48%]">
                         {nextEvolutions.length > 0 ?
-                            <div className="flex flex-row flex-wrap gap-[2%] text-sm py-[2.5em] mb-[2.5em] border-b-[#333] border-b-[dotted] md:p-0">
+                            <div className="flex flex-row flex-wrap gap-[2%] text-sm py-[2.5em] mb-[2.5em] border-b-1 border-b-[#333] border-dotted md:p-0">
                                 <h3 className="w-full text-base mb-[0.5em]">あなたの将来性<span className="block text-sm leading-[1.2]">（※進化後）</span></h3>
                                 <>
                                     {nextEvolutions.map((evolution, i) => (

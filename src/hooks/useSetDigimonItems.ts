@@ -12,10 +12,14 @@ export const useSetDigimonItems = () => {
         fetchDigiData.then((data) => {
             setDigimonData(data);
 
+            if (data?.descriptions.length === 0) {
+                setDescriptions('このデジモンには紹介文はありません。');
+            }
+
             /* デジモンの紹介文（日本語）*/
             data?.descriptions.forEach(digiDescriptionData => {
-                if (digiDescriptionData.language === 'jap') {
-                    setDescriptions(digiDescriptionData.description)
+                if (digiDescriptionData.language === 'jap' && digiDescriptionData.description.length > 0) {
+                    setDescriptions(digiDescriptionData.description);
                 }
             });
 
