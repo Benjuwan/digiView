@@ -21,7 +21,8 @@ export type digimons = {
         forEach(arg0: (data: {
             language: string;
             description: string;
-        }) => void): string[]
+        }) => void): string[],
+        length: number;
     };
     images: {
         [0]: {
