@@ -19,8 +19,8 @@
 - @tailwindcss/vite@4.1.10
 - @types/react-dom@18.3.7
 - @types/react@18.3.23
-- @typescript-eslint/eslint-plugin@6.21.0
-- @typescript-eslint/parser@6.21.0
+- @typescript-eslint/eslint-plugin@8.35.0
+- @typescript-eslint/parser@8.35.0
 - @vitejs/plugin-react@1.3.2
 - eslint-plugin-react-hooks@4.6.2
 - eslint-plugin-react-refresh@0.4.20
